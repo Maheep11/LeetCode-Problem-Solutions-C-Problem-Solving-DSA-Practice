@@ -1,0 +1,39 @@
+BRUTE approach - 
+In this approach we can use a loop and if-else statements to search whether the neighboring element makes a pair or not and out of that we can get the answer.
+but it has a time complexity of  O(N).
+
+OPTIMISED approach - 
+We can use the binnary search approach,
+First we take the low , high and mid and through mid we judge which half has the unique element, 
+we find it thorugh the concept that - IF _MID_ is even and its pair is on right side on odd than the element is on right half of the mid, and if not so then the element is on the left half,
+this eliminations keep on going till a unique element is achieved . 
+
+The OPTIMIZED CODE is - 
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        int n = nums.size() ; 
+        if(n==1) return nums[0] ; 
+        if(nums[0]!= nums[1]) return nums[0] ; 
+        if(nums[n-1]!= nums[n-2]) return nums[n-1] ; 
+        int low = 1 , high = n-2 ;
+        while(low<=high){
+            int mid = (low+high)/2 ; 
+            // Checks for mid to be the unique element 
+            if(nums[mid] != nums[mid+1] && nums[mid] != nums[mid-1]) return nums[mid]  ; 
+            // Checks whether the element is in right half 
+            if((mid%2==1 && nums[mid]==nums[mid-1]) || (mid%2==0 && nums[mid]==nums[mid+1])){
+                low = mid+1 ; 
+            }
+            // Checks whether the element is in left half 
+            else {
+                high = mid-1 ; 
+            }
+        }
+        return -1; 
+    }
+};
+
+
+
+This code has a time complexity of O(Log N) & space complexity as O(1) . 
