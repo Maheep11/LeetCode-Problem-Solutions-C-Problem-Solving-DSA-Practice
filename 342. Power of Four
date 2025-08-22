@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isPowerOfFour(int n) {
+        if (n <= 0) return false;
+
+        // check power of 2
+        if ((n & (n - 1)) != 0) return false;
+
+        // check power of 4 using mask
+        return (n & 0x55555555) != 0; 
+    }
+};
+
+Time complexity  - O(1) 
