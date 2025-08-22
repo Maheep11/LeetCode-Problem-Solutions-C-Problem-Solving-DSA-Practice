@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int maxel(vector<int>& piles) {
+        int maxi = INT_MIN; 
+        for (int val : piles) {
+            maxi = max(maxi, val); 
+        }
+        return maxi;
+    }
+
+    long long calhrs(vector<int>& piles, int hourly) {
+        long long totalh = 0;
+        for (int v: piles) {
+            // ceiling division safely
+            totalh += ( (long long)v + hourly - 1 ) / hourly;
+        }
+        return totalh;
+    }
+
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int low = 1, high = maxel(piles);
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            long long totalh = calhrs(piles, mid);
+
+            if (totalh <= h) {      // mid is valid, but try smaller
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;  // not just low, but tracked ans
+    }
+};
+
+Time Complexity = O(N) * O(log 2 (maxelement) 
