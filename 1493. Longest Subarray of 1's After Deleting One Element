@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums) {
+        int anslen = 0 , len = 0 , left = 0 , right = 0 , cnt= 0 ; 
+        while(right<nums.size() && left<=right){
+            if(nums[right]==0) cnt++ ; 
+            while(cnt>1){
+                if(nums[left]==0){
+                    cnt-- ; 
+                }
+                left++ ; 
+            }
+            if(cnt<2){
+                len = right-left ; 
+                anslen = max(anslen, len) ;
+                right++ ;
+            }
+             
+        }
+        return anslen; 
+    }
+};
+
+Time Complexity = O(n)
+Space Complexity = O(1)
