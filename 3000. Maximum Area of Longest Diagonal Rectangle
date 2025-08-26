@@ -1,1 +1,26 @@
+class Solution {
+public:
+    int areaOfMaxDiagonal(vector<vector<int>>& dimensions) {
+        double maxDiagonal = -1; 
+    int maxArea = -1; 
+
+    for (auto& rect : dimensions) {
+        int l = rect[0];
+        int w = rect[1];
+        double diag = sqrt(l * l + w * w);
+        int area = l * w;
+
+        if (diag > maxDiagonal) {
+            maxDiagonal = diag;
+            maxArea = area;
+        } else if (abs(diag - maxDiagonal) < 1e-9) { // diagonals equal (floating-point check)
+            if (area > maxArea) {
+                maxArea = area;
+            }
+        }
+    }
+    return maxArea;
+    }
+};
+
 
