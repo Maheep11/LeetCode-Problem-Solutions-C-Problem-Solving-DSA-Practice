@@ -12,5 +12,5 @@ public:
     }
 };
 
-Time Complexity - O(N + N)
-Space Complexity - O(N) 
+Time Complexity - O(N + 26)
+Space Complexity - O(26) 
