@@ -11,3 +11,6 @@ public:
         return 1 ; 
     }
 };
+
+Time Complexity - O(N + N)
+Space Complexity - O(N) 
