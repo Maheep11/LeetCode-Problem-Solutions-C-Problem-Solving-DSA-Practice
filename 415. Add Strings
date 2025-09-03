@@ -37,3 +37,5 @@ string add_num(string num1, string num2){
         }
     }
 };
+
+Time complexity = O(num1 + num2) 
