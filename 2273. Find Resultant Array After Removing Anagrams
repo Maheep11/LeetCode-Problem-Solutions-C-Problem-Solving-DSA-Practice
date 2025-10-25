@@ -6,7 +6,7 @@ public:
         sort(b.begin(), b.end()) ;
         return a==b ;  
     }
-    
+     
     vector<string> removeAnagrams(vector<string>& words) {
         vector<string> res;
         for(string word : words){
